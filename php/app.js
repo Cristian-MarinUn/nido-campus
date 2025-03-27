@@ -1,113 +1,60 @@
-const express = require("express");
-const mysql = require("mysql2");
-const bodyParser = require("body-parser");
+const API_URL = "crud_usuarios.php"; // Asegúrate de que la ruta es correcta
 
-const app = express();
-const port = 3000;
+// 🔹 Función para registrar usuario
+async function registrarUsuario(nombres, correo, celular, contraseña) {
+    const data = new FormData();
+    data.append("accion", "crear");
+    data.append("nombres", nombres);
+    data.append("correo", correo);
+    data.append("celular", celular);
+    data.append("contraseña", contraseña);
 
+    const response = await fetch(API_URL, {
+        method: "POST",
+        body: data,
+    });
 
-const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "test",
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
+    const result = await response.text();
+    alert(result); // Muestra el mensaje de respuesta
+}
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// 🔹 Función para obtener todos los usuarios y mostrarlos en la consola
+async function obtenerUsuarios() {
+    const response = await fetch(`${API_URL}?accion=obtener`);
+    const usuarios = await response.json();
+    console.log(usuarios);
+}
 
+// 🔹 Función para eliminar usuario
+async function eliminarUsuario(id) {
+    const data = new FormData();
+    data.append("accion", "eliminar");
+    data.append("id", id);
 
-app.get("/usuarios", (req, res) => {
-  pool.query("SELECT * FROM usuarios", (err, results) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
-    res.json(results);
-  });
-});
+    const response = await fetch(API_URL, {
+        method: "POST",
+        body: data,
+    });
 
+    const result = await response.text();
+    alert(result);
+}
 
-app.get("/usuarios/:id", (req, res) => {
-  const id = req.params.id;
-  pool.query("SELECT * FROM usuarios WHERE id = ?", [id], (err, results) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
-    if (results.length === 0) {
-      return res.status(404).send("Usuario no encontrado");
-    }
-    res.json(results[0]);
-  });
-});
+// 🔹 Función para actualizar usuario
+async function actualizarUsuario(id, nombres, correo, celular, contraseña) {
+    const data = new FormData();
+    data.append("accion", "actualizar");
+    data.append("id", id);
+    data.append("nombres", nombres);
+    data.append("correo", correo);
+    data.append("celular", celular);
+    data.append("contraseña", contraseña);
 
+    const response = await fetch(API_URL, {
+        method: "POST",
+        body: data,
+    });
 
-app.post("/usuarios", (req, res) => {
-  const { nombre, correo } = req.body;
-  pool.query(
-    "INSERT INTO usuarios (nombre, correo) VALUES (?, ?)",
-    [nombre, correo],
-    (err, result) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-      res.send("Usuario creado con éxito");
-    }
-  );
-});
-
-
-app.put("/usuarios/:id", (req, res) => {
-  const id = req.params.id;
-  const { nombre, correo } = req.body;
-  pool.query(
-    "UPDATE usuarios SET nombre = ?, correo = ? WHERE id = ?",
-    [nombre, correo, id],
-    (err, result) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-      res.send("Usuario actualizado con éxito");
-    }
-  );
-});
-
-
-app.delete("/usuarios/:id", (req, res) => {
-  const id = req.params.id;
-  pool.query("DELETE FROM usuarios WHERE id = ?", [id], (err, result) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
-    res.send("Usuario eliminado con éxito");
-  });
-});
-
-app.listen(port, () => {
-  console.log(`Servidor escuchando en el puerto ${port}`);
-});
-
-app.post("/login", (req, res) => {
-  const { username, password } = req.body;
-
-  pool.query(
-      "SELECT * FROM usuarios WHERE nombre = ? AND password = ?",
-      [username, password],
-      (err, results) => {
-          if (err) {
-              return res.status(500).json({ message: "Error en el servidor" });
-          }
-          if (results.length === 0) {
-              return res.status(401).json({ message: "Credenciales incorrectas" });
-          }
-
-          res.json({
-              id: results[0].id,
-              nombre: results[0].nombre,
-              correo: results[0].correo
-          });
-      }
-  );
-});
+    const result = await response.text();
+    alert(result);
+}
