@@ -1,0 +1,110 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Panel izquierdo (sidebar) */
+.sidebar {
+    width: 300px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-nidocampus{
+    margin-top: -80px;
+    width: 150px;
+    height: 150px;
+    border-radius: 70px;
+    
+
+}
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.b-ingresar{
+    margin-top: 20px;
+}
+.b-registrar {
+    margin-top: 7px;
+    
+}
+
+
+.sidebar button:hover {
+    background-color: #2ecc71;
+}
+
+/* Contenido principal */
+.main-content {
+    color: antiquewhite;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.main-content h1 {
+    margin-bottom: 20px;
+}
+
+/* Galería de imágenes */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.gallery img {
+    width: 250px;
+    height: 150px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+.main-content {
+    background-color: rgb(153, 149, 135)
+}

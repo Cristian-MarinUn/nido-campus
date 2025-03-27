@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitaciones - NIDOCAMPUS</title>
+    <link rel="stylesheet" href="/css/ingreso.css">
+</head>
+<body>
+
+    <!-- Header con configuración de usuario -->
+    <header class="header">
+        <h1>NIDOCAMPUS</h1>
+        <div class="user-menu">
+            <span id="user-name">Bienvenido, Usuario</span>
+            <button onclick="logout()">Cerrar Sesión</button>
+        </div>
+    </header>
+
+    <!-- Sección de habitaciones -->
+    <main class="habitaciones-container">
+        <h2>Habitaciones Disponibles</h2>
+        <div class="habitaciones-grid">
+            <div class="habitacion">
+                <img src="img/habitacion1.jpg" alt="Habitación 1">
+                <h3>Habitación Individual</h3>
+                <p>Precio: $300/mes</p>
+                <button>Ver Detalles</button>
+            </div>
+            <div class="habitacion">
+                <img src="img/habitacion2.jpg" alt="Habitación 2">
+                <h3>Habitación Compartida</h3>
+                <p>Precio: $200/mes</p>
+                <button>Ver Detalles</button>
+            </div>
+            <div class="habitacion">
+                <img src="img/habitacion3.jpg" alt="Habitación 3">
+                <h3>Estudio Privado</h3>
+                <p>Precio: $400/mes</p>
+                <button>Ver Detalles</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/ingreso.js"></script>
+</body>
+</html>
