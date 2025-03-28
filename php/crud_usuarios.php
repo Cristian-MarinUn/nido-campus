@@ -4,6 +4,9 @@ $user = "root";  // Cambia esto si usas otro usuario
 $password = "";  // Cambia esto si tienes una contraseña
 $database = "db-nidocampus";
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Conexión a MySQL
 $conn = new mysqli($host, $user, $password, $database);
 

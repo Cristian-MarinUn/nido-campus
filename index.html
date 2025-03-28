@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIDOCAMPUS - Arriendo de Habitaciones</title>
+    <link rel="stylesheet" href="/css/styless.css">
+</head>
+<body>
+
+    <!-- Panel izquierdo para login y registro -->
+    <div class="sidebar">
+        <img src="/img/Nido Campus. The logo.jpg" class="logo-nidocampus">
+        <h2>Acceso</h2>
+        <input type="text" placeholder="Usuario" id="username">
+        <input type="password" placeholder="Contraseña" id="password">
+        
+        <button onclick="login()" class="b-ingresar">Ingresar</button>
+        
+        
+        <a href="/html/crear_usuario.html">
+            <button class="b-registrar">Crear Usuario</button>
+        </a>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <h1>Bienvenido a NIDOCAMPUS</h1>
+        <p>Encuentra la mejor habitación o casa para arrendar cerca de tu campus.</p>
+
+        <!-- Galería de imágenes -->
+        <div class="gallery">
+            <img src="/img/habitacion/dormitorio-1.jpg" alt="Habitación">
+            <img src="/img/casa/casa1.jpg " alt="Casa">
+            <img src="/img/apartamentos/montereserva-apto1.jpg" alt="Apartamento">
+            <img src="/img/dormitorio/dormitorio1.jpg" alt="Dormitorio">
+        </div>
+    </div>
+
+    <script src="/php/app.js"></script>
+</body>
+</html>
